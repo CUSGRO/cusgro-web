@@ -2,16 +2,17 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { Play, X } from 'lucide-react';
+
+interface VideoPlayerProps { }
 
 const VideoPlayer = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
+    const openModal = (): void => setIsModalOpen(true);
 
-    const closeModal = () => {
+    const closeModal = (): void => {
         setIsModalOpen(false);
         if (videoRef.current) {
             videoRef.current.pause();
@@ -24,77 +25,82 @@ const VideoPlayer = () => {
         }
     }, [isModalOpen]);
 
-    // Close modal on 'Escape' key press
     useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
+        const handleKeyDown = (event: KeyboardEvent): void => {
+            if (event.key === 'Escape') closeModal();
         };
-
         window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
+        return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
     return (
-        <div className="relative mt-12 w-full max-w-4xl mx-auto">
-            {/* Gradient Border Container */}
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-200 to-white p-px">
-                <div className="relative rounded-[23px] overflow-hidden bg-white">
-                    <Image
-                        src="/thumbnail.png"
-                        alt="Video Thumbnail"
-                        width={1280}
-                        height={720}
-                        className="w-full h-auto block"
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <button
-                            className="bg-slate-800/90 text-white font-bold py-3 px-6 rounded-full text-lg flex items-center space-x-2 transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                            onClick={(e) => {
-                                e.stopPropagation(); // Prevent the div's onClick from firing again
-                                openModal();
-                            }}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>Watch Demo</span>
-                        </button>
+        <>
+            <div className="relative mt-12 w-full max-w-4xl mx-auto group cursor-pointer" onClick={openModal}>
+                <div className="relative rounded-2xl bg-gradient-to-br from-purple-200 via-blue-200 to-cyan-200 p-1 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
+                    <div className="relative rounded-[23px] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 aspect-video">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20"></div>
+
+                        {/* Mock Dashboard UI */}
+                        <div className="absolute inset-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                            <div className="p-4 h-full flex flex-col">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex space-x-2">
+                                        <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                                        <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                        <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div className="text-white/80 text-xs">CUSGRO Dashboard</div>
+                                </div>
+                                
+                                <div className="flex-1 rounded-lg overflow-hidden bg-white/5 border border-white/10">
+                                    <Image 
+                                        src="/thumbnail.png" 
+                                        alt="Play demo"
+                                        width={1280}
+                                        height={720}
+                                        className="w-full h-full object-cover opacity-80"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold py-4 px-8 rounded-full text-lg flex items-center space-x-3 transform group-hover:scale-110 transition-all duration-300 shadow-2xl">
+                                <Play className="h-6 w-6 fill-current" />
+                                <span>Watch Demo</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Full-screen Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50" onClick={closeModal}>
-                    <div className="relative w-full h-full max-w-screen-lg max-h-screen-lg">
+                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300" onClick={closeModal}>
+                    <div className="relative w-full h-full max-w-6xl max-h-[90vh] m-4">
                         <button
-                            className="absolute top-4 right-4 text-white text-4xl z-50"
-                            onClick={(e) => {
+                            className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-50 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20"
+                            onClick={(e: React.MouseEvent) => {
                                 e.stopPropagation();
                                 closeModal();
                             }}
                         >
-                            &times;
+                            <X className="h-6 w-6" />
                         </button>
-                        <video
-                            ref={videoRef}
-                            src="/demo.mp4"
-                            controls
-                            className="w-full h-full"
-                            onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking on the video
-                        />
+                        <div className="w-full h-full bg-black rounded-lg overflow-hidden">
+                            <video
+                                ref={videoRef}
+                                controls
+                                className="w-full h-full"
+                                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            >
+                                <source src="/demo.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
