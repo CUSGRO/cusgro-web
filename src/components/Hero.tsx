@@ -2,7 +2,6 @@
 import { ArrowRight, BarChart2, CheckCircle, LucideIcon, Mail, NotebookText, Search, Sparkles, User, Video, X } from 'lucide-react';
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
-import { set } from 'mongoose';
 
 // interface AnimatedCounterProps {
 //     target: number;
@@ -236,7 +235,7 @@ export const Hero = () => {
 
                                 {/* Footer */}
                                 <p className="text-xs text-gray-400 text-center mt-6">
-                                    We'll notify you as soon as spots open up. No spam, promise! 🚀
+                                    We&apos;ll notify you as soon as spots open up. No spam, promise! 🚀
                                 </p>
                             </div>
                         </div>}

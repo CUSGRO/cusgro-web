@@ -150,7 +150,7 @@ export default function Contact() {
                             Get in Touch
                         </h2>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Ready to boost your sales with AI? Let's discuss how CUSGRO can transform your business.
+                            Ready to boost your sales with AI? Let&apos;s discuss how CUSGRO can transform your business.
                         </p>
                     </div>
 
@@ -162,7 +162,7 @@ export default function Contact() {
                                     Send us a Message
                                 </h3>
                                 <p className="text-gray-600">
-                                    Fill out the form below and we'll get back to you within 24 hours.
+                                    Fill out the form below and we&apos;ll get back to you within 24 hours.
                                 </p>
                             </div>
 
@@ -172,7 +172,7 @@ export default function Contact() {
                                         <span className="text-green-500 text-xl">{successMessage == "Send Message! 🎉" ? "✅": "❌"}</span>
                                         <div>
                                             <h4 className={`font-semibold ${successMessage == "Send Message! 🎉" ? "text-green-800" : "text-red-800"}`}>{successMessage}</h4>
-                                            {successMessage == "Send Message! 🎉" ? <p className="text-green-700 text-sm">We'll get back to you soon.</p> : "" }
+                                            {successMessage == "Send Message! 🎉" ? <p className="text-green-700 text-sm">We&apos;ll get back to you soon.</p> : "" }
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +263,7 @@ export default function Contact() {
                                 {/* Submit Button */}
                                 <button
                                     type="button"
-                                    onClick={(e) => handleSubmit(e as any)}
+                                    onClick={(e) => handleSubmit(e)}
                                     disabled={isSubmitting}
                                     className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 ${isSubmitting
                                             ? 'bg-gray-400 cursor-not-allowed'

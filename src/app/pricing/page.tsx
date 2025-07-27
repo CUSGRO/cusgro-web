@@ -1,82 +1,81 @@
 "use client";
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-interface Feature {
-    text: string;
-    icon: string;
-    available: boolean;
-}
+// interface Feature {
+//     text: string;
+//     icon: string;
+//     available: boolean;
+// }
 
-interface Plan {
-    id: string;
-    name: string;
-    price: string;
-    period: string;
-    popular: boolean;
-    features: Feature[];
-    buttonText: string;
-}
+// interface Plan {
+//     id: string;
+//     name: string;
+//     price: string;
+//     period: string;
+//     popular: boolean;
+//     features: Feature[];
+//     buttonText: string;
+// }
 
 export default function Pricing() {
-    const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+    // const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
-    const plans: Plan[] = [
-        {
-            id: 'basic',
-            name: 'Basic',
-            price: '$100',
-            period: 'One-Time Payment',
-            popular: false,
-            features: [
-                { text: 'Full Source Code', icon: '✅', available: true },
-                { text: 'Self-Hosted (Run it yourself)', icon: '✅', available: true },
-                { text: 'Pay OpenAI API separately', icon: '⚠️', available: true },
-                { text: 'No server setup or support', icon: '❌', available: false }
-            ],
-            buttonText: 'Get Started'
-        },
-        {
-            id: 'pro',
-            name: 'Pro',
-            price: '$150',
-            period: 'One-Time Payment',
-            popular: true,
-            features: [
-                { text: 'Full Source Code', icon: '✅', available: true },
-                { text: 'We set up & deploy everything for you', icon: '✅', available: true },
-                { text: 'Runs on your PC or server (self-hosted)', icon: '✅', available: true },
-                { text: 'You pay OpenAI API separately', icon: '⚠️', available: true }
-            ],
-            buttonText: 'Get Pro'
-        },
-        {
-            id: 'cloud',
-            name: 'Cloud',
-            price: '$20',
-            period: 'Per Month',
-            popular: false,
-            features: [
-                { text: 'Hosted on Our Server', icon: '✅', available: true },
-                { text: 'No Setup Required', icon: '✅', available: true },
-                { text: 'Just Pay & Use', icon: '✅', available: true },
-                { text: 'No Source Code Access', icon: '❌', available: false }
-            ],
-            buttonText: 'Subscribe'
-        }
-    ];
+    // const plans: Plan[] = [
+    //     {
+    //         id: 'basic',
+    //         name: 'Basic',
+    //         price: '$100',
+    //         period: 'One-Time Payment',
+    //         popular: false,
+    //         features: [
+    //             { text: 'Full Source Code', icon: '✅', available: true },
+    //             { text: 'Self-Hosted (Run it yourself)', icon: '✅', available: true },
+    //             { text: 'Pay OpenAI API separately', icon: '⚠️', available: true },
+    //             { text: 'No server setup or support', icon: '❌', available: false }
+    //         ],
+    //         buttonText: 'Get Started'
+    //     },
+    //     {
+    //         id: 'pro',
+    //         name: 'Pro',
+    //         price: '$150',
+    //         period: 'One-Time Payment',
+    //         popular: true,
+    //         features: [
+    //             { text: 'Full Source Code', icon: '✅', available: true },
+    //             { text: 'We set up & deploy everything for you', icon: '✅', available: true },
+    //             { text: 'Runs on your PC or server (self-hosted)', icon: '✅', available: true },
+    //             { text: 'You pay OpenAI API separately', icon: '⚠️', available: true }
+    //         ],
+    //         buttonText: 'Get Pro'
+    //     },
+    //     {
+    //         id: 'cloud',
+    //         name: 'Cloud',
+    //         price: '$20',
+    //         period: 'Per Month',
+    //         popular: false,
+    //         features: [
+    //             { text: 'Hosted on Our Server', icon: '✅', available: true },
+    //             { text: 'No Setup Required', icon: '✅', available: true },
+    //             { text: 'Just Pay & Use', icon: '✅', available: true },
+    //             { text: 'No Source Code Access', icon: '❌', available: false }
+    //         ],
+    //         buttonText: 'Subscribe'
+    //     }
+    // ];
 
-    const handleCardHover = (planId: string): void => {
-        setHoveredCard(planId);
-    };
+    // const handleCardHover = (planId: string): void => {
+    //     setHoveredCard(planId);
+    // };
 
-    const handleCardLeave = (): void => {
-        setHoveredCard(null);
-    };
+    // const handleCardLeave = (): void => {
+    //     setHoveredCard(null);
+    // };
 
-    const handleButtonClick = (planId: string): void => {
-        alert("Join Waitlist and we will contact you soon!")
-    };
+    // const handleButtonClick = (planId: string): void => {
+    //     alert("Join Waitlist and we will contact you soon!")
+    // };
 
 
     return (

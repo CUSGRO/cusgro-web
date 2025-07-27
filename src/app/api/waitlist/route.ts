@@ -32,7 +32,7 @@ export async function POST(request: Request) {
             { success: true, message: 'Joined waitlist successfully! 🎉' },
             { status: 200 }
         );
-    } catch (error) {
+    } catch (_) {
         return NextResponse.json({ error: "Failed to join waitlist" }, { status: 500 });
     }
 }

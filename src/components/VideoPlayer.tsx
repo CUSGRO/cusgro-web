@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Play, X } from 'lucide-react';
 
-interface VideoPlayerProps { }
+// interface VideoPlayerProps { }
 
 const VideoPlayer = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
