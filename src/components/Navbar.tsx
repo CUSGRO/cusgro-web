@@ -10,9 +10,9 @@ export const Navbar = () => {
 
             <div className="right-bar flex items-center space-x-6 font-[500]">
                 <ul className="pages flex items-center space-x-2 text-black">
-                    <li>
+                    {/* <li>
                         <Link href="/pricing" className="hover:bg-blue-100/30 hover:text-blue-700 px-4 py-3 rounded-full">Pricing</Link>
-                    </li>
+                    </li> */}
                     {/* <li className="relative group">
                         <div className="cursor-pointer hover:bg-blue-100/30 hover:text-blue-700 px-4 py-3 rounded-full flex">Resources <ChevronDown /></div>
                         <div className="absolute top-6 right-0 w-60 h-16 hidden group-hover:block"></div>

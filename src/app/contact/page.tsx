@@ -154,7 +154,7 @@ export default function Contact() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div className="grid grid-cols-1 gap-16">
                         {/* Contact Form */}
                         <div className="space-y-8">
                             <div>
@@ -286,46 +286,7 @@ export default function Contact() {
                         </div>
 
                         {/* Contact Information */}
-                        <div className="space-y-8">
-                            <div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                    Other Ways to Reach Us
-                                </h3>
-                                <p className="text-gray-600">
-                                    Choose the method that works best for you.
-                                </p>
-                            </div>
-
-                            {/* Contact Methods */}
-                            <div className="space-y-4">
-                                {contactMethods.map((method, index) => (
-                                    <div
-                                        key={index}
-                                        className="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                                                {method.icon}
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="font-semibold text-gray-900 mb-1">
-                                                    {method.title}
-                                                </h4>
-                                                <p className="text-gray-600 text-sm mb-2">
-                                                    {method.description}
-                                                </p>
-                                                <p className="text-purple-600 font-semibold group-hover:text-purple-700 transition-colors">
-                                                    {method.action}
-                                                </p>
-                                            </div>
-                                            <div className="text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300">
-                                                →
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
