@@ -32,7 +32,7 @@ export const Navbar = () => {
                         <Link href="/pricing" className="hover:bg-blue-100/30 hover:text-blue-700 px-4 py-3 rounded-full">Login</Link>
                     </li> */}
                     <li>
-                        <Link href="/contact" className="hover:bg-blue-100/30 hover:text-blue-700 px-4 py-3 rounded-full">Contact Us</Link>
+                        <Link href="/contact" className="hover:bg-blue-100/30 hover:text-blue-700 px-4 py-3 rounded-full">Contact</Link>
                     </li>
                 </ul>
             </div>

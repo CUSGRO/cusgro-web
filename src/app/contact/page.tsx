@@ -25,13 +25,14 @@ export default function Contact() {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
-        company: '',
+        company: "",
         message: ''
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+    const [successMessage, setSuccessMessage] = useState<string>('');
 
     const contactMethods: ContactMethod[] = [
         {
@@ -102,11 +103,24 @@ export default function Contact() {
         setIsSubmitting(true);
 
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            if (!formData.company) {
+                formData.company = 'Not provided';
+            }
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-            console.log('Form submitted:', formData);
+            const data = await response.json();
+            if (!response.ok) {
+                setIsSubmitted(false);
+                setSuccessMessage(data.message || 'An error occurred');
+            }
             setIsSubmitted(true);
+            setSuccessMessage(data.message || 'Message sent successfully!');
 
             // Reset form
             setFormData({
@@ -119,18 +133,11 @@ export default function Contact() {
             // Reset success message after 5 seconds
             setTimeout(() => setIsSubmitted(false), 5000);
         } catch (error) {
+            setIsSubmitted(false);
+            setSuccessMessage('Failed to send message. Please try again later.');
             console.error('Error submitting form:', error);
         } finally {
             setIsSubmitting(false);
-        }
-    };
-
-    const handleContactMethodClick = (link: string): void => {
-        if (link.startsWith('#')) {
-            // Handle chat or other custom actions
-            console.log('Contact method clicked');
-        } else {
-            window.open(link, '_blank');
         }
     };
     return (
@@ -162,10 +169,10 @@ export default function Contact() {
                             {isSubmitted && (
                                 <div className="bg-green-50 border border-green-200 rounded-xl p-4">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-green-500 text-xl">✅</span>
+                                        <span className="text-green-500 text-xl">{successMessage == "Send Message! 🎉" ? "✅": "❌"}</span>
                                         <div>
-                                            <h4 className="font-semibold text-green-800">Message Sent!</h4>
-                                            <p className="text-green-700 text-sm">We'll get back to you soon.</p>
+                                            <h4 className={`font-semibold ${successMessage == "Send Message! 🎉" ? "text-green-800" : "text-red-800"}`}>{successMessage}</h4>
+                                            {successMessage == "Send Message! 🎉" ? <p className="text-green-700 text-sm">We'll get back to you soon.</p> : "" }
                                         </div>
                                     </div>
                                 </div>

@@ -2,11 +2,12 @@
 import { ArrowRight, BarChart2, CheckCircle, LucideIcon, Mail, NotebookText, Search, Sparkles, User, Video, X } from 'lucide-react';
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
+import { set } from 'mongoose';
 
-interface AnimatedCounterProps {
-    target: number;
-    suffix?: string;
-}
+// interface AnimatedCounterProps {
+//     target: number;
+//     suffix?: string;
+// }
 
 // const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ target, suffix = "" }) => {
 //   const [count, setCount] = useState<number>(0);
@@ -28,6 +29,10 @@ interface Feature {
     label: string;
 }
 
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export const Hero = () => {
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
@@ -36,13 +41,34 @@ export const Hero = () => {
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
     const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
-    const handleSubmit = (): void => {
+    const [waitListMessage, setWaitListMessage] = useState<string>('');
+    const [waitListError, setWaitListError] = useState<boolean>(false);
+
+    const handleSubmit = async () => {
         if (email && name) {
             setIsSubmitting(true);
-            setTimeout(() => setIsSubmitting(false), 3000);
-            setWaitListOpen(false);
-            setIsSubmitted(true);
-            setTimeout(() => setIsSubmitted(false), 3000);
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }),
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                setWaitListMessage(errorData.message || 'Failed to join waitlist');
+                setIsSubmitting(false);
+                setWaitListError(true);
+                await sleep(5000); // Show error message for 5 seconds
+                setWaitListOpen(false);
+                setWaitListError(false);
+            } else {
+                const successData = await response.json();
+                setWaitListMessage(successData.message || 'Joined waitlist successfully!');
+                setWaitListError(false);
+                setWaitListOpen(false);
+                setIsSubmitted(true);
+            }
         }
     };
 
@@ -191,8 +217,8 @@ export const Hero = () => {
                                     {/* Submit button */}
                                     <button
                                         onClick={handleSubmit}
-                                        className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
-                                        disabled={isSubmitting}
+                                        className={`w-full py-3 bg-gradient-to-r ${waitListError ? "from-red-600 to-red-700 " : "from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"} text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer`}
+                                        disabled={isSubmitting || isSubmitted}
                                     >
                                         {isSubmitting ? (
                                             <>
@@ -201,7 +227,7 @@ export const Hero = () => {
                                             </>
                                         ) : (
                                             <>
-                                                Join Waitlist
+                                                {waitListMessage ? waitListMessage : "Join Waitlist"}
                                                 <ArrowRight className="w-5 h-5" />
                                             </>
                                         )}
