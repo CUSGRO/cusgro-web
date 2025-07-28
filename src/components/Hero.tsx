@@ -1,27 +1,7 @@
 "use client";
-import { ArrowRight, BarChart2, CheckCircle, LucideIcon, Mail, NotebookText, Search, Sparkles, User, Video, X } from 'lucide-react';
+import { ArrowRight, CheckCircle, LucideIcon, Mail, Sparkles, User, X } from 'lucide-react';
+import Image from 'next/image';
 import React, { useState } from 'react';
-import VideoPlayer from './VideoPlayer';
-
-// interface AnimatedCounterProps {
-//     target: number;
-//     suffix?: string;
-// }
-
-// const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ target, suffix = "" }) => {
-//   const [count, setCount] = useState<number>(0);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       if (count < target) {
-//         setCount(count + Math.ceil((target - count) / 10));
-//       }
-//     }, 100);
-//     return () => clearTimeout(timer);
-//   }, [count, target]);
-
-//   return <span>{count}{suffix}</span>;
-// };
 
 interface Feature {
     icon: LucideIcon;
@@ -38,7 +18,6 @@ export const Hero = () => {
     const [waitListOpen, setWaitListOpen] = useState<boolean>(false);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-    const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
     const [waitListMessage, setWaitListMessage] = useState<string>('');
     const [waitListError, setWaitListError] = useState<boolean>(false);
@@ -79,48 +58,16 @@ export const Hero = () => {
         setEmail(e.target.value);
     };
 
-    const features: Feature[] = [
-        { icon: Search, label: "AI Lead Research" },
-        { icon: Video, label: "Live Call Assist" },
-        { icon: NotebookText, label: "Smart Call Notes" },
-        { icon: Mail, label: "Auto Follow-ups" },
-        { icon: BarChart2, label: "Performance Analytics" },
-    ];
-
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50" id='#join'>
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-                    <div className="absolute top-40 right-20 w-72 h-72 bg-cyan-300/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-                    <div className="absolute -bottom-32 left-20 w-72 h-72 bg-pink-300/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
-                </div>
-
+            <div className="min-h-screen" id='#join'>
                 <main className="relative flex min-h-screen flex-col items-center justify-center p-6 sm:p-24">
 
-                    <div className="text-center mt-20 w-full max-w-6xl">
-                        {/* Social Proof Banner */}
-                        {/* <div className="mb-8 inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm border border-purple-200 rounded-full px-4 py-2 shadow-sm">
-            <div className="flex items-center space-x-1">
-              <Users className="h-4 w-4 text-purple-600" />
-              <span className="text-sm text-gray-600">Trusted by</span>
-              <span className="font-semibold text-purple-600"><AnimatedCounter target={2500} />+</span>
-              <span className="text-sm text-gray-600">sales teams</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-3 w-3 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <span className="text-sm font-medium">4.9/5</span>
-            </div>
-          </div> */}
+                    <div className="text-center w-full max-w-6xl relative md:mt-20 mt-36">
 
                         {/* Hero Section */}
-                        <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent leading-tight">
-                            Your Ultimate AI Sales Co-Pilot
+                        <h1 className="text-4xl sm:text-6xl font-bold text-black leading-tight">
+                            Your Ultimate AI Sales <span className='text-blue-600'>Co-Pilot</span>
                         </h1>
                         <p className="w-full sm:w-[70%] mx-auto mt-6 text-lg text-gray-600 leading-relaxed">
                             Boost close rates by <span className="font-semibold text-purple-600">40%</span>.
@@ -131,7 +78,7 @@ export const Hero = () => {
                         {/* CTA Form */}
                         <div className="mt-8">
                             <div className="flex justify-center">
-                                <div className="flex flex-col sm:flex-row items-center bg-white rounded-full p-2 shadow-2xl border border-gray-200 max-w-md w-full">
+                                <div className="flex flex-col sm:flex-row items-center bg-white rounded-full p-2 border border-gray-200 max-w-md w-full">
                                     <input
                                         className="outline-none flex-1 px-4 py-3 rounded-full text-center sm:text-left"
                                         type="email"
@@ -141,7 +88,7 @@ export const Hero = () => {
                                     />
                                     <button
                                         onClick={() => setWaitListOpen(true)}
-                                        className={`${isSubmitted ? 'bg-green-500' : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700'} px-6 py-3 rounded-full text-white font-bold cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center space-x-2 mt-2 sm:mt-0`}
+                                        className={`${isSubmitted ? 'bg-green-500' : 'bg-slate-100'} px-6 py-3 rounded-full text-black font-bold cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 mt-2 sm:mt-0`}
                                         disabled={isSubmitted}
                                     >
                                         {isSubmitted ? (
@@ -239,28 +186,8 @@ export const Hero = () => {
                                 </p>
                             </div>
                         </div>}
-
-                        {/* Video Demo */}
-                        <VideoPlayer />
-
-                        {/* Features */}
-                        <div className="flex flex-wrap justify-center items-center gap-8 mt-12 text-sm">
-                            {features.map((feature: Feature, index: number) => {
-                                const IconComponent = feature.icon;
-                                return (
-                                    <div
-                                        key={index}
-                                        className="flex flex-col items-center p-4 rounded-xl hover:bg-white/80 backdrop-blur-sm transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-lg border border-transparent hover:border-purple-200"
-                                        onMouseEnter={() => setHoveredFeature(index)}
-                                        onMouseLeave={() => setHoveredFeature(null)}
-                                    >
-                                        <div className={`p-3 rounded-full mb-2 transition-all duration-300 ${hoveredFeature === index ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg scale-110' : 'bg-gray-100 text-gray-600'}`}>
-                                            <IconComponent className="h-6 w-6" />
-                                        </div>
-                                        <span className="font-medium text-gray-800">{feature.label}</span>
-                                    </div>
-                                );
-                            })}
+                        <div className="border border-gray-200 rounded-2xl p-1 px-3 mt-10">
+                            <Image src={'/app-image.png'} alt='app' width={1280} height={720} />
                         </div>
                     </div>
                 </main>

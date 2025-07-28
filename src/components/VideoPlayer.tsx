@@ -78,7 +78,7 @@ const VideoPlayer = () => {
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300" onClick={closeModal}>
                     <div className="relative w-full h-full max-w-6xl max-h-[90vh] m-4">
                         <button
-                            className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-50 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20"
+                            className="absolute md:-top-12 top-0 right-0 text-white hover:text-gray-300 transition-colors z-50 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20"
                             onClick={(e: React.MouseEvent) => {
                                 e.stopPropagation();
                                 closeModal();

@@ -23,7 +23,7 @@ export const Footer = () => {
                         <a href="https://twitter.com/cusgro" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition">
                             <Twitter className="w-5 h-5" />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition">
+                        <a href="https://linkedin.com/company/cusgro" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition">
                             <Linkedin className="w-5 h-5" />
                         </a>
                     </div>
