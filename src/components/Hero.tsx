@@ -1,12 +1,14 @@
 "use client";
 import { ArrowRight, CheckCircle, LucideIcon, Mail, Sparkles, User, X } from 'lucide-react';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import { Russo_One } from 'next/font/google';
+import HeroAnim from '@/components/HeroAnim';
 
-interface Feature {
-    icon: LucideIcon;
-    label: string;
-}
+const russo = Russo_One({
+  subsets: ['latin'],
+  weight: '400', // Bebas Neue has only 400
+  variable: '--font-archivo',
+});
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -62,15 +64,15 @@ export const Hero = () => {
         <>
             <div className="min-h-screen" id='#join'>
                 <main className="relative flex min-h-screen flex-col items-center justify-center p-6 sm:p-24">
-
-                    <div className="text-center w-full max-w-6xl relative md:mt-20 mt-36">
+                    <HeroAnim />
+                    <div className="text-center w-full max-w-6xl relative">
 
                         {/* Hero Section */}
-                        <h1 className="text-4xl sm:text-6xl font-bold text-black leading-tight">
-                            Your Ultimate AI Sales <span className='text-blue-600'>Co-Pilot</span>
+                        <h1 className={`text-4xl sm:text-6xl text-white ${russo.className}`}>
+                            Your Ultimate AI Sales Co-Pilot
                         </h1>
-                        <p className="w-full sm:w-[70%] mx-auto mt-6 text-lg text-gray-600 leading-relaxed">
-                            Boost close rates by <span className="font-semibold text-purple-600">40%</span>.
+                        <p className="w-full sm:w-[70%] mx-auto mt-6 text-lg text-gray-300 leading-relaxed">
+                            Boost close rates by 40%
                             Automates lead research, guides your sales calls in real-time, and handles
                             post-call follow-ups so you never miss a lead again!
                         </p>
@@ -78,9 +80,9 @@ export const Hero = () => {
                         {/* CTA Form */}
                         <div className="mt-8">
                             <div className="flex justify-center">
-                                <div className="flex flex-col sm:flex-row items-center bg-white rounded-full p-2 border border-gray-200 max-w-md w-full">
+                                <div className="flex flex-col sm:flex-row items-center bg-gray-300/20 backdrop-blur-2xl rounded-full p-2 max-w-md w-full">
                                     <input
-                                        className="outline-none flex-1 px-4 py-3 rounded-full text-center sm:text-left"
+                                        className="outline-none flex-1 px-4 py-3 rounded-full text-center sm:text-left text-white"
                                         type="email"
                                         placeholder="Enter your email for early access"
                                         value={email}
@@ -186,9 +188,6 @@ export const Hero = () => {
                                 </p>
                             </div>
                         </div>}
-                        <div className="border border-gray-200 rounded-2xl p-1 px-3 mt-10">
-                            <Image src={'/app-image.png'} alt='app' width={1280} height={720} />
-                        </div>
                     </div>
                 </main>
             </div>

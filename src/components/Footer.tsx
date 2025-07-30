@@ -5,17 +5,24 @@ import { Twitter, Linkedin } from 'lucide-react';
 export const Footer = () => {
     return (
         <>
-            <footer className='bg-[#1a1a1a] text-white py-6'>
+            <footer className='bg-[#1a1a1a] text-white py-6 relative'>
                 <div className="text-center mx-auto pt-10">
                     <h3 className='mt-5 text-2xl font-semibold'>Try out the next gen AI Sales Co-Pilot</h3>
                     <p className='text-slate-400 mt-2'>
                         Join the waitlist now to get early access and an exclusive discount on our all-in-one AI app—fully managed or self-hosted, your choice!
                     </p>
-                    <Link href={'#join'}>
-                        <button className='bg-[#242424] shadow-2xl px-4 py-3 mt-6 rounded-lg font-semibold cursor-pointer'>
-                            Join Waitlist
-                        </button>
-                    </Link>
+                    <div className="flex items-center mx-auto justify-center gap-6">
+                        <Link href={'#join'}>
+                            <button className='bg-[#242424] shadow-2xl px-4 py-3 mt-6 rounded-lg font-semibold cursor-pointer'>
+                                Join Waitlist
+                            </button>
+                        </Link>
+                        <Link href={'/contact'}>
+                            <button className='bg-[#242424] shadow-2xl px-4 py-3 mt-6 rounded-lg font-semibold cursor-pointer'>
+                                Contact Us
+                            </button>
+                        </Link>
+                    </div>
                 </div>
 
                 <div className="mt-10 border-t border-gray-700 pt-6 text-center">
