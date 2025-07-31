@@ -36,7 +36,7 @@ const VideoPlayer = () => {
     return (
         <>
             <div className="relative mt-12 w-full max-w-4xl mx-auto group cursor-pointer" onClick={openModal}>
-                <div className="relative rounded-2xl bg-gradient-to-br bg-[#ffffff26] p-5 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
+                <div className="relative rounded-2xl bg-slate-700/80 p-5 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
                     <div className="relative rounded-[23px] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 aspect-video">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20"></div>
 

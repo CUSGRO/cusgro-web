@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <main className=''>
       <Hero />
-      <div className="bg-gradient-to-b from-[#ffffff]/50 from-50% to-[#f6f7f7] relative">
-        <div className="border-b border-gray-200 py-5">
+      <div className="bg-black/70 relative">
+        <div className="border-b border-gray-700 py-5">
           {/* Video Demo */}
           <VideoPlayer />
           {/* Features */}
@@ -43,7 +43,7 @@ export default function Home() {
                   <div className={`p-3 rounded-full mb-2 transition-all duration-300 ${hoveredFeature === index ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg scale-110' : 'bg-gray-100 text-gray-600'}`}>
                     <IconComponent className="h-6 w-6" />
                   </div>
-                  <span className="font-medium text-gray-800">{feature.label}</span>
+                  <span className="font-medium text-gray-50">{feature.label}</span>
                 </div>
               );
             })}
