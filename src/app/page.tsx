@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <main className=''>
       <Hero />
-      <div className="bg-gradient-to-b from-white from-50% to-[#f6f7f7] relative">
-        <div className="border border-gray-200 py-5">
+      <div className="bg-gradient-to-b from-[#ffffff]/50 from-50% to-[#f6f7f7] relative">
+        <div className="border-b border-gray-200 py-5">
           {/* Video Demo */}
           <VideoPlayer />
           {/* Features */}
@@ -36,7 +36,7 @@ export default function Home() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center p-4 rounded-xl hover:bg-white/80 backdrop-blur-sm transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-lg border border-transparent hover:border-purple-200"
+                  className="flex flex-col items-center p-4 rounded-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-lg border border-transparent hover:border-purple-200"
                   onMouseEnter={() => setHoveredFeature(index)}
                   onMouseLeave={() => setHoveredFeature(null)}
                 >

@@ -34,21 +34,6 @@ export default function Contact() {
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string>('');
 
-    const contactMethods: ContactMethod[] = [
-        {
-            icon: '📧',
-            title: 'Email Us',
-            description: 'Get in touch via email',
-            action: 'cusgro2025@gmail.com',
-        },
-        {
-            icon: '📞',
-            title: 'Call Us',
-            description: 'Speak directly with us',
-            action: '+977 9804862878',
-        }
-    ];
-
     const validateEmail = (email: string): boolean => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
